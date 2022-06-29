@@ -32,7 +32,7 @@ import Foundation
  */
 public struct Header: Codable {
     /// Type Header Parameter
-    public var typ: String = "JWT"
+    public var typ: String? = "JWT"
     /// Algorithm Header Parameter
     public var alg: String?
     /// JSON Web Token Set URL Header Parameter
