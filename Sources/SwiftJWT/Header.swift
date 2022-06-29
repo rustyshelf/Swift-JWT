@@ -31,11 +31,10 @@ import Foundation
  ```
  */
 public struct Header: Codable {
-    
     /// Type Header Parameter
-    public var typ: String?
+    public var typ: String = "JWT"
     /// Algorithm Header Parameter
-    public internal(set) var alg: String?
+    public var alg: String?
     /// JSON Web Token Set URL Header Parameter
     public var jku : String?
     /// JSON Web Key Header Parameter
@@ -54,44 +53,10 @@ public struct Header: Codable {
     public var cty: String?
     /// Critical Header Parameter
     public var crit: [String]?
+    /// Custom field, id
+    public var id: String?
     
-    /// Initialize a `Header` instance.
-    ///
-    /// - Parameter typ: The Type Header Parameter
-    /// - Parameter jku: The JSON Web Token Set URL Header Parameter
-    /// - Parameter jwk: The JSON Web Key Header Parameter
-    /// - Parameter kid: The Key ID Header Parameter
-    /// - Parameter x5u: The X.509 URL Header Parameter
-    /// - Parameter x5c: The X.509 Certificate Chain Header Parameter
-    /// - Parameter x5t: The X.509 Certificate SHA-1 Thumbprint Header Parameter
-    /// - Parameter x5tS256: X.509 Certificate SHA-256 Thumbprint Header Parameter
-    /// - Parameter cty: The Content Type Header Parameter
-    /// - Parameter crit: The Critical Header Parameter
-    /// - Returns: A new instance of `Header`.
-    public init(
-        typ: String? = "JWT",
-        jku: String? = nil,
-        jwk: String? = nil,
-        kid: String? = nil,
-        x5u: String? = nil,
-        x5c: [String]? = nil,
-        x5t: String? = nil,
-        x5tS256: String? = nil,
-        cty: String? = nil,
-        crit: [String]? = nil
-    ) {
-        self.typ = typ
-        self.alg = nil
-        self.jku = jku
-        self.jwk = jwk
-        self.kid = kid
-        self.x5u = x5u
-        self.x5c = x5c
-        self.x5t = x5t
-        self.x5tS256 = x5tS256
-        self.cty = cty
-        self.crit = crit
-    }
+    public init() {}
     
     func encode() throws -> String  {
         let jsonEncoder = JSONEncoder()
